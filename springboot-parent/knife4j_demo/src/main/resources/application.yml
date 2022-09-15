@@ -1,0 +1,12 @@
+server:
+  port: 7788
+huachuan:
+  swagger:
+    enabled: true #是否启用swagger
+    docket:
+      user:
+        title: 用户模块
+        base-package: com.huachuan.controller.user
+      menu:
+        title: 菜单模块
+        base-package: com.huachuan.controller.menu
