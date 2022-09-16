@@ -1,7 +1,7 @@
 # 该配置文件，只做注释参考，请勿修改此文件。（修改后也不会有任何效果，如要修改配置，请在nacos中修改redis.yml）
 pinda:
   redis:
-    ip: 127.0.0.1
+    ip: 10.197.26.8
     port: 6379
     password:
 
@@ -129,9 +129,9 @@ redis:
   cluster_name: j2cache
   # redis缓存命名空间可选，默认[空]
   namespace:
-  hosts: ${pinda.redis.ip}:${pinda.redis.port}
+  hosts: ${eerf.redis.ip}:${eerf.redis.port}
   timeout: 2000
-  password: ${pinda.redis.password}
+  password: ${eerf.redis.password}
   database: 0
   maxTotal: 100
   maxIdle: 10
@@ -156,8 +156,8 @@ lettuce:
   storage: generic
   channel: j2cache
   scheme: redis
-  hosts: ${pinda.redis.ip}:${pinda.redis.port}
-  password: ${pinda.redis.password}
+  hosts: ${eerf.redis.ip}:${eerf.redis.port}
+  password: ${eerf.redis.password}
   database: 0
   sentinelMasterId:
   maxTotal: 100
