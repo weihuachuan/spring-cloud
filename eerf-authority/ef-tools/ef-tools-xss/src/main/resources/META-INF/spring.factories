@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+    com.foxconn.eerf.xss.XssAuthConfiguration
