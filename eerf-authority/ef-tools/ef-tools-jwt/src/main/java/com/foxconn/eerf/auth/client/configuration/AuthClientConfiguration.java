@@ -19,5 +19,4 @@ public class AuthClientConfiguration {
     public JwtTokenClientUtils getJwtTokenClientUtils(AuthClientProperties authClientProperties) {
         return new JwtTokenClientUtils(authClientProperties);
     }
-
 }

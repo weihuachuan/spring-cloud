@@ -76,7 +76,7 @@ public class TokenContextFilter extends BaseFilter {
             errorResponse(e.getMessage(), e.getCode(), 200);
             return null;
         } catch (Exception e) {
-            errorResponse("解析token出错", R.FAIL_CODE, 200);
+//            errorResponse("解析token出错", R.FAIL_CODE, 200);
             return null;
         }
 

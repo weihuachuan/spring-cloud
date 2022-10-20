@@ -19,7 +19,6 @@
         <module>ef-auth</module>
         <module>ef-gateway</module>
         <module>ef-goods</module>
-        <module>ef-goods-entity</module>
         <!--<module>ef-file</module>-->
     </modules>
     <dependencyManagement>

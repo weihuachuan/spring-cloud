@@ -12,7 +12,6 @@
         <module>ef-parent</module>
         <module>ef-apps</module>
         <module>ef-tools</module>
-        <module>ef-goods</module>
     </modules>
     <packaging>pom</packaging>
 </project>

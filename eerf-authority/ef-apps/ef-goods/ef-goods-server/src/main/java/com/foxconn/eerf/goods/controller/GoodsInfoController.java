@@ -20,6 +20,7 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,7 +36,6 @@ public class GoodsInfoController extends BaseController {
     private DozerUtils dozer;
     @Autowired
     private GoodsInfoService goodsInfoService;
-
     /**
      * 分页查询商品信息
      *
@@ -68,7 +68,6 @@ public class GoodsInfoController extends BaseController {
     @GetMapping("/list")
     @SysLog("查询商品信息")
     public R<List<GoodsInfo>> list(GoodsInfoPageDTO data) {
-
         LbqWrapper<GoodsInfo> wrapper = Wraps.lbQ();
 
         wrapper.like(GoodsInfo::getName, data.getName())

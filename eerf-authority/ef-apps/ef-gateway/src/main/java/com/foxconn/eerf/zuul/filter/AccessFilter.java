@@ -70,7 +70,15 @@ public class AccessFilter extends BaseFilter {
         List<String> resourceNeed2Auth =
                 (List<String>) resourceNeed2AuthObject.getValue();
         if(resourceNeed2Auth == null){
-            resourceNeed2Auth = resourceApi.list().getData();
+            R<List> resourceList = resourceApi.list();
+            if(resourceList != null){
+                resourceNeed2Auth = resourceList.getData();
+            }else {
+                //未知请求
+                errorResponse(ExceptionCode.UNAUTHORIZED.getMsg(),
+                        ExceptionCode.UNAUTHORIZED.getCode(), 200);
+                return null;
+            }
             if(resourceNeed2Auth != null){
                 cacheChannel.set(CacheKey.RESOURCE,
                         CacheKey.RESOURCE_NEED_TO_CHECK,

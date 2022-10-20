@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@TableName("eerf_goods_info")
+@TableName("ef_goods_info")
 public class GoodsInfo extends Entity<Long> {
 
     private static final long serialVersionUID = 1L;
