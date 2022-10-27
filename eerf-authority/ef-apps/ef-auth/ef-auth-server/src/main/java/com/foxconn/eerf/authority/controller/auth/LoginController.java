@@ -38,7 +38,7 @@ public class LoginController extends BaseController {
 
     @ApiOperation(value = "验证码", notes = "验证码")
     @GetMapping(value = "/captcha", produces = "image/png")
-    @SysLog("验证码")
+    @SysLog("生成验证码")
     public void captcha(@RequestParam(value = "key") String key,
                         HttpServletResponse response) throws IOException {
         this.validateCodeService.create(key, response);

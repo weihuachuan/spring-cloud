@@ -4,6 +4,9 @@ import com.foxconn.eerf.authority.biz.service.auth.ValidateCodeService;
 import com.foxconn.eerf.common.constant.CacheKey;
 import com.foxconn.eerf.exception.BizException;
 import com.wf.captcha.ArithmeticCaptcha;
+import com.wf.captcha.ChineseCaptcha;
+import com.wf.captcha.GifCaptcha;
+import com.wf.captcha.SpecCaptcha;
 import com.wf.captcha.base.Captcha;
 import net.oschina.j2cache.CacheChannel;
 import net.oschina.j2cache.CacheObject;
@@ -58,5 +61,30 @@ public class ValidateCodeServiceImpl implements ValidateCodeService {
         //验证通过，立即从缓存中删除验证码
         cache.evict(CacheKey.CAPTCHA, key);
         return true;
+    }
+    private Captcha createCaptcha(String type) {
+        Captcha captcha = null;
+        if (StringUtils.equalsIgnoreCase(type, "gif")) {
+            captcha = new GifCaptcha(115, 42, 4);
+        } else if (StringUtils.equalsIgnoreCase(type, "png")) {
+            captcha = new SpecCaptcha(115, 42, 4);
+        } else if (StringUtils.equalsIgnoreCase(type, "arithmetic")) {
+            captcha = new ArithmeticCaptcha(115, 42);
+        } else if (StringUtils.equalsIgnoreCase(type, "chinese")) {
+            captcha = new ChineseCaptcha(115, 42);
+        }
+        captcha.setCharType(2);
+        return captcha;
+    }
+
+    private void setHeader(HttpServletResponse response, String type) {
+        if (StringUtils.equalsIgnoreCase(type, "gif")) {
+            response.setContentType(MediaType.IMAGE_GIF_VALUE);
+        } else {
+            response.setContentType(MediaType.IMAGE_PNG_VALUE);
+        }
+        response.setHeader(HttpHeaders.PRAGMA, "No-cache");
+        response.setHeader(HttpHeaders.CACHE_CONTROL, "No-cache");
+        response.setDateHeader(HttpHeaders.EXPIRES, 0L);
     }
 }
