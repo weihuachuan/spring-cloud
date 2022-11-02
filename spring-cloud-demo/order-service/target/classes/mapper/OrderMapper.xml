@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.mapper.OrderMapper">
+
+    <insert id="create" parameterType="com.demo.entity.Order" useGeneratedKeys="true" keyProperty="id">
+        insert into order_tbl (user_id, product, count, money) values (#{userId},#{product}, #{count}, #{money})
+    </insert>
+
+</mapper>
